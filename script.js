@@ -14,6 +14,10 @@ function Book(author, title, pages, read, id) {
 function addBookToLibrary(author, title, pages, read) {
     let id = crypto.randomUUID();
 
+    if (read === "") {
+        
+    }
+
     let aBook = new Book(author,  title, pages, read, id)
 
     myLibrary.push(aBook);
@@ -53,6 +57,12 @@ form.addEventListener("submit", (e) => {
 
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData)
+
+    if (formProps.read === "read") {
+        formProps.read = true;
+    } else {
+        formProps.read = false;
+    }
 
     console.log(formProps)
 
