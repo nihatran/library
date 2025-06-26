@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <button class="add-btn">Add Book</button>
+    <dialog>
+        <p>Enter Book Details:</p>
+        <form class="bookForm">
+            <div class="input-container">
+                <label for="bookTitle">Title:</label>
+                <input type="text" id="bookTitle" name="title"><br>
+                <label for="bookAuthor">Author:</label>
+                <input type="text" id="bookAuthor" name="author"><br>
+                <label for="bookPages">Pages:</label>
+                <input type="text" id="bookPages" name="pages"><br>
+                <div class="check-container">
+                    <label for="bookRead">Read</label>
+                    <input type="checkbox" id="bookRead" name="read" value="read"><br>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type="button" class="close-btn">Close</button>
+        </form>
+    </dialog>
+    <div class="results"></div>
+</body>
+</html>
