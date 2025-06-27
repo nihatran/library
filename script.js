@@ -1,6 +1,20 @@
 
 const myLibrary = [];
 
+
+const addButton = document.querySelector(".add-btn");
+const dialog = document.querySelector("dialog");
+const closeButton = document.querySelector(".close-btn");
+const form = document.querySelector(".bookForm");
+const libraryBooks = document.querySelector(".books-list")
+
+const titleInput = document.getElementById("bookTitle")
+const authorInput = document.getElementById("bookAuthor")
+const pagesInput = document.getElementById("bookPages")
+const readInput = document.getElementById("bookRead")
+
+
+
 // Book constructor
 function Book(author, title, pages, read, id) {
     this.author = author;
@@ -14,32 +28,25 @@ function Book(author, title, pages, read, id) {
 function addBookToLibrary(author, title, pages, read) {
     let id = crypto.randomUUID();
 
-    if (read === "") {
-        
-    }
-
     let aBook = new Book(author,  title, pages, read, id)
 
     myLibrary.push(aBook);
 }
 
-// displaying books as cards
+// displaying books as list
 function displayBooks() {
     myLibrary.forEach(item => console.log(item))
+
+    let newBook = document.createElement("li");
+
+    myLibrary.forEach(book => {
+        newBook.textContent = `Title: ${book.title}
+                            Author: ${book.author}
+                            Pages: ${book.pages}
+                            Read: ${book.read}`
+        libraryBooks.appendChild(newBook);
+    })
 }
-
-
-
-const addButton = document.querySelector(".add-btn");
-const dialog = document.querySelector("dialog");
-const closeButton = document.querySelector(".close-btn");
-const form = document.querySelector(".bookForm");
-
-const titleInput = document.getElementById("bookTitle")
-const authorInput = document.getElementById("bookAuthor")
-const pagesInput = document.getElementById("bookPages")
-const readInput = document.getElementById("bookRead")
-
 
 
 const results = document.querySelector(".results");
@@ -68,12 +75,11 @@ form.addEventListener("submit", (e) => {
 
     addBookToLibrary(formProps.author, formProps.title, formProps.pages, formProps.read)
 
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
+    readInput.checked = false;
+
     console.log(myLibrary)
-
+    displayBooks();
 })
-
-
-
-
-
-displayBooks();
