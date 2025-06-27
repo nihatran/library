@@ -2,6 +2,7 @@
 const myLibrary = [];
 
 
+// select elements
 const addButton = document.querySelector(".add-btn");
 const dialog = document.querySelector("dialog");
 const closeButton = document.querySelector(".close-btn");
@@ -14,8 +15,7 @@ const pagesInput = document.getElementById("bookPages")
 const readInput = document.getElementById("bookRead")
 
 
-
-// Book constructor
+// book constructor
 function Book(author, title, pages, read, id) {
     this.author = author;
     this.title = title;
@@ -33,9 +33,8 @@ function addBookToLibrary(author, title, pages, read) {
     myLibrary.push(aBook);
 }
 
-// displaying books as list
+// display books as list
 function displayBooks() {
-    myLibrary.forEach(item => console.log(item))
 
     let newBook = document.createElement("li");
 
@@ -46,10 +45,10 @@ function displayBooks() {
                             Read: ${book.read}`
         libraryBooks.appendChild(newBook);
     })
+
+    //to view library
+    myLibrary.forEach(item => console.log(item))
 }
-
-
-const results = document.querySelector(".results");
 
 addButton.addEventListener("click", () => {
     dialog.showModal();
@@ -71,8 +70,6 @@ form.addEventListener("submit", (e) => {
         formProps.read = false;
     }
 
-    console.log(formProps)
-
     addBookToLibrary(formProps.author, formProps.title, formProps.pages, formProps.read)
 
     titleInput.value = "";
@@ -80,6 +77,5 @@ form.addEventListener("submit", (e) => {
     pagesInput.value = "";
     readInput.checked = false;
 
-    console.log(myLibrary)
     displayBooks();
 })
